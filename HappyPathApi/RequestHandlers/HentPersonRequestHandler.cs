@@ -19,7 +19,7 @@ namespace HappyPathApi.RequestHandlers
             // Et par eksempelcaser som kan føre til exceptions er hardkodet her,
             // for å demonstrere hva som skjer mtp custom middleware.
 
-            if (request.PersonId <= 4)
+            if (request.PersonId == 4)
             {
                 // Simulerer at personen med ID 4 ikke finnes i basen.
                 throw new EntityNotFoundException(nameof(Person), request.PersonId);
