@@ -10,14 +10,14 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  projectName: happyapi
+  projectName: HappyPathApi
   registryServerName: '$(registryName).azurecr.io'
   imageName: '$(projectName)'
   # define 3 more variables: registryName, registryLogin and registryPassword in the build pipeline in UI
 
 
 steps:
-- bash: docker build -f $(system.defaultWorkingDirectory)/Dockerfile -t $(registryServerName)/$(imageName):$(build.buildId) -t $(registryServerName)/$(imageName):latest $(system.defaultWorkingDirectory)
+- bash: docker build -f $(system.defaultWorkingDirectory)/$(projectName)/Dockerfile -t $(registryServerName)/$(imageName):$(build.buildId) -t $(registryServerName)/$(imageName):latest $(system.defaultWorkingDirectory)
   displayName: 'docker build'
 
   
