@@ -12,7 +12,7 @@ pool:
 variables:
   projectName: 'HappyPathApi'
   registryServerName: '$(registryName).azurecr.io'
-  imageName: '$(projectName)'
+  imageName: 'happypathapi'
   # define 3 more variables: registryName, registryLogin and registryPassword in the build pipeline in UI
 
 
