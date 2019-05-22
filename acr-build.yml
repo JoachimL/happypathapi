@@ -10,7 +10,7 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  projectName: HappyPathApi
+  projectName: 'HappyPathApi'
   registryServerName: '$(registryName).azurecr.io'
   imageName: '$(projectName)'
   # define 3 more variables: registryName, registryLogin and registryPassword in the build pipeline in UI
