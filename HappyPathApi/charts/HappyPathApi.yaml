@@ -1,4 +1,0 @@
-apiVersion: v1
-description: Example of a .net core API based on MediatR 
-name: happypathapi
-version: v0.1.0
