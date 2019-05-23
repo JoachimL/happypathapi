@@ -36,7 +36,7 @@ steps:
   inputs:
     helmVersion: 2.13.0
 
-- bash: helm package --version $(build.buildId) --destination $(build.artifactStagingDirectory) $(system.defaultWorkingDirectory)/$(projectName)/charts/$(projectName).yaml
+- bash: helm package --version $(build.buildId) --destination $(build.artifactStagingDirectory) $(system.defaultWorkingDirectory)/$(projectName)/charts/$(projectName)
   displayName: 'helm package'
 
 - bash: az acr helm push -n $(registryName) -u $(registryLogin) -p $(registryPassword) $(build.artifactStagingDirectory)/$(projectName)-$(build.buildId).tgz
