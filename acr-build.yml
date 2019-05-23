@@ -10,9 +10,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  projectName: 'HappyPathApi'
+  projectName: 'happypathapi'
   registryServerName: '$(registryName).azurecr.io'
-  imageName: 'happypathapi'
+  imageName: '$(projectName)'
   # define 3 more variables: registryName, registryLogin and registryPassword in the build pipeline in UI
 
 
@@ -21,7 +21,7 @@ steps:
   inputs:
     version: '3.0.100-preview5-011568' # replace this value with the version that you need for your project
 
-- bash: docker build -f $(system.defaultWorkingDirectory)/$(projectName)/Dockerfile -t $(registryServerName)/$(imageName):$(build.buildId) -t $(registryServerName)/$(imageName):latest $(system.defaultWorkingDirectory)
+- bash: docker build -f $(system.defaultWorkingDirectory)/HappyPathApi/Dockerfile -t $(registryServerName)/$(imageName):$(build.buildId) -t $(registryServerName)/$(imageName):latest $(system.defaultWorkingDirectory)
   displayName: 'docker build'
 
   
@@ -40,7 +40,7 @@ steps:
   inputs:
     helmVersion: 2.13.0
 
-- bash: helm package --version $(build.buildId) --destination $(build.artifactStagingDirectory) $(system.defaultWorkingDirectory)/$(projectName)/charts/$(projectName)
+- bash: helm package --version $(build.buildId) --destination $(build.artifactStagingDirectory) $(system.defaultWorkingDirectory)/HappyPathApi/charts/HappyPathApi
   displayName: 'helm package'
 
 - bash: az acr helm push -n $(registryName) -u $(registryLogin) -p $(registryPassword) $(build.artifactStagingDirectory)/$(projectName)-$(build.buildId).tgz
