@@ -1,0 +1,10 @@
+replicaCount: 1
+image:
+  useImagePullSecrets: false
+  pullPolicy: Always
+service:
+  internalPort: 80
+  externalPort: 80
+ingress:
+  enabled: true
+  basedomain: opfkubeclu-oslopensjonsfors-24c224-55fa129b.hcp.westeurope.azmk8s.io
